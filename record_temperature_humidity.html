@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Temperature and Humidity</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Record Temperature and Humidity</h2>
+        <!-- record_temperature_humidity form -->
+        <form action="record_temperature_humidity.php" method="POST">
+            <label for="batch_id">Batch ID:</label>
+            <input type="text" id="batch_id" name="batch_id" required>
+
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" step="0.01" id="temperature" name="temperature" required>
+
+            <label for="humidity">Humidity (%):</label>
+            <input type="number" step="0.01" id="humidity" name="humidity" required>
+
+            <button type="submit">Record Data</button>
+        </form>
+    </div>
+</body>
+</html>
