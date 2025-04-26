@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products</title>
+</head>
+<body>
+        
+    <div class="content-box">
+        <h2>Manage Products</h2>
+        
+        <!-- Add Product Form -->
+        <div class="add-product-section">
+            <h3>Add New Product</h3>
+            <form method="POST" action="manage_products.php">
+                <input type="hidden" name="add_product" value="1">
+                <label for="name">Product Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="origin">Origin:</label>
+                <input type="text" id="origin" name="origin" required>
+
+                <label for="variety">Variety:</label>
+                <input type="text" id="variety" name="variety" required>
+
+                <label for="harvest_date">Harvest Date:</label>
+                <input type="date" id="harvest_date" name="harvest_date" required>
+
+                <label for="certifications">Certifications:</label>
+                <input type="text" id="certifications" name="certifications" required>
+
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
+
+        <!-- Product Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Origin</th>
+                    <th>Variety</th>
+                    <th>Harvest Date</th>
+                    <th>Certifications</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = $products->fetch_assoc()): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($row['id']); ?></td>
+                    <td><?php echo htmlspecialchars($row['name']); ?></td>
+                    <td><?php echo htmlspecialchars($row['origin']); ?></td>
+                    <td><?php echo htmlspecialchars($row['variety']); ?></td>
+                    <td><?php echo htmlspecialchars($row['harvest_date']); ?></td>
+                    <td><?php echo htmlspecialchars($row['certifications']); ?></td>
+                    <td class="actions">
+                        <a href="?section=edit_product&id=<?php echo $row['id']; ?>" class="btn-edit">Edit</a>
+                        <a href="?section=manage_products&delete_id=<?php echo $row['id']; ?>" class="btn-delete" onclick="return confirm('Delete this product and ALL related data?')">Delete</a>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
+
+    
+</body>
+</html>
