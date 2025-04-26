@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Quality Control</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="container">
+        <h2>Record Quality Control</h2>
+        <!-- view_quality_control form -->
+        <form action="record_quality_control.php" method="POST">
+            <label for="batch_id">Batch ID:</label>
+            <input type="text" id="batch_id" name="batch_id" required>
+        
+            <label for="stage">Stage (e.g., Post-Production, Cold Storage, Distribution):</label>
+            <input type="text" id="stage" name="stage" required>
+        
+            <label for="inspection_result">Inspection Results:</label>
+            <textarea id="inspection_result" name="inspection_result" rows="4" required></textarea>
+        
+            <button type="submit">Record Inspection</button>
+        </form>
+    </div>
+        
+</body>
+</html>
