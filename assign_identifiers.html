@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Identifiers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Assign Product Identifiers</h2>
+        <!-- Form to Assign Identifiers -->
+        <form action="assign_identifiers.php" method="POST">
+            <label for="product_id">Product ID:</label>
+            <input type="text" id="product_id" name="product_id" required>
+
+            <label for="lot_number">Lot Number:</label>
+            <input type="text" id="lot_number" name="lot_number" required>
+
+            <label for="barcode">Barcode:</label>
+            <input type="text" id="barcode" name="barcode" required>
+
+            <button type="submit">Assign Identifiers</button>
+        </form>
+    </div>
+</body>
+</html>
