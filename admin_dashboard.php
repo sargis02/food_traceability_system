@@ -104,7 +104,7 @@ $section = isset($_GET['section']) ? $_GET['section'] : 'home';
                     echo '<div class="stat-card"><h3>Total Products</h3><p>'.$productRow['count'].'</p></div>';
                     
                     // Recent Issues
-                    $issueCount = mysqli_query($conn, "SELECT COUNT(*) as count FROM Affected_Batches WHERE affected_date >= DATE_SUB(NOW(), INTERVAL 7 DAY)");
+                    $issueCount = mysqli_query($conn, "SELECT COUNT(*) as count FROM Affected_Batches WHERE affected_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)");
                     $issueRow = mysqli_fetch_assoc($issueCount);
                     echo '<div class="stat-card"><h3>Recent Issues</h3><p>'.$issueRow['count'].'</p></div>';
                     
