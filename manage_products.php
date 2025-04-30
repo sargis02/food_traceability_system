@@ -1,5 +1,5 @@
 <?php
-// Include the database connection
+// database connection
 include('db_connection.php');
 
 // product deletion
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_product'])) {
     
 }
 
-// Function to search products
+// search products
 function searchProducts($conn, $search) {
     $sql = "SELECT * FROM Products WHERE name LIKE ? OR origin LIKE ? OR variety LIKE ? ORDER BY id ASC";
     $stmt = $conn->prepare($sql);
@@ -50,6 +50,6 @@ $products = searchProducts($conn, $search);
 
 
 
-// Include the HTML file for displaying the form and table
+// HTML file for displaying
 include('manage_products.html');
 ?>

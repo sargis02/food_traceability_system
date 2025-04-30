@@ -18,12 +18,14 @@ $result = mysqli_query($conn, $sql);
     <table>
         <tr>
             <th>Product ID</th>
+            <th>Batch ID</th>
             <th>Lot Number</th>
             <th>Barcode</th>
         </tr>
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
         <tr>
             <td><?php echo $row['product_id']; ?></td>
+            <td><?php echo $row['batch_id']; ?></td>
             <td><?php echo $row['lot_number']; ?></td>
             <td><?php echo $row['barcode']; ?></td>
         </tr>

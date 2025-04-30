@@ -2,13 +2,13 @@
 session_start();
 include('db_connection.php');
 
-// Redirect to login if not authenticated
+// Redirect to login 
 if (!isset($_SESSION['username'])) {
     header("Location: login.html");
     exit();
 }
 
-// Determine which content to load
+// content to load
 $section = isset($_GET['section']) ? $_GET['section'] : 'home';
 ?>
 <!DOCTYPE html>
@@ -57,7 +57,7 @@ $section = isset($_GET['section']) ? $_GET['section'] : 'home';
         <!-- Main Content Area -->
         <div class="main-content">
             <?php
-            // Load the appropriate content based on section
+            // Load content based on section
             switch($section) {
                 case 'manage_products':
                     include('manage_products.php');

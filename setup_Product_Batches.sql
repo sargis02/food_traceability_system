@@ -1,5 +1,5 @@
 CREATE TABLE Product_Batches (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    batch_id INT AUTO_INCREMENT PRIMARY KEY, 
     product_id INT NOT NULL,
     lot_number VARCHAR(255) NOT NULL,
     barcode VARCHAR(255) NOT NULL,
