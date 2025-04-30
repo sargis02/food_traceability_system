@@ -2,13 +2,13 @@
 session_start();
 include('db_connection.php');
 
-// Redirect to login 
+// Redirect to login if not authenticated
 if (!isset($_SESSION['username'])) {
     header("Location: login.html");
     exit();
 }
 
-// content to load
+// Determine which content to load
 $section = isset($_GET['section']) ? $_GET['section'] : 'home';
 ?>
 <!DOCTYPE html>
