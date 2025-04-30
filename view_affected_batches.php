@@ -1,5 +1,5 @@
 <?php
-// view_affected_batches.php
+
 include('db_connection.php');
 
 $sql = "SELECT * FROM Affected_Batches";
@@ -32,7 +32,7 @@ $result = mysqli_query($conn, $sql);
                     <td><?php echo htmlspecialchars($row['batch_id']); ?></td>
                     <td><?php echo htmlspecialchars($row['distribution_point']); ?></td>
                     <td><?php echo htmlspecialchars($row['issue_description']); ?></td>
-                    <td><?php echo htmlspecialchars($row['affected_date']); ?></td>
+                    <td><?php echo htmlspecialchars($row['affected_at']); ?></td>
                 </tr>
                 <?php } ?>
             </tbody>

@@ -2,8 +2,8 @@
 // view_temperature_humidity.php
 include('db_connection.php');
 
-// Fetch the temperature and humidity data from the database
-$sql = "SELECT * FROM Temperature_Humidity ORDER BY timestamp DESC";
+
+$sql = "SELECT * FROM Temperature_Humidity ORDER BY recorded_at DESC";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -34,7 +34,7 @@ $result = mysqli_query($conn, $sql);
                         <td><?php echo htmlspecialchars($row['batch_id']); ?></td>
                         <td><?php echo number_format($row['temperature'], 2); ?></td>
                         <td><?php echo number_format($row['humidity'], 2); ?></td>
-                        <td><?php echo htmlspecialchars($row['timestamp']); ?></td>
+                        <td><?php echo htmlspecialchars($row['recorded_at']); ?></td>
                     </tr>
                     <?php } ?>
                 </tbody>
