@@ -7,14 +7,12 @@ body {
     color: #333;
 }
 
-/* Layout */
+/* Dashboard Layout */
 .container {
-    width: 80%; 
-    margin: 0 auto;
-    padding: 20px;
+    display: flex;
+    min-height: 100vh;
 }
 
-/* Sidebar */
 .sidebar {
     width: 250px;
     background: #2c3e50;
@@ -23,28 +21,107 @@ body {
     position: fixed;
     height: 100vh;
     overflow-y: auto;
-    display: none;
 }
 
-/* Main content */
+.user-info {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #34495e;
+    margin-bottom: 20px;
+}
+
+.user-info p {
+    margin: 0 0 10px;
+    font-weight: bold;
+}
+
+.logout-btn {
+    color: #ecf0f1;
+    background: #e74c3c;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 0.9em;
+    display: inline-block;
+}
+
+.logout-btn:hover {
+    background: #c0392b;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-category {
+    color: #7f8c8d;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    padding: 15px 20px 5px;
+    margin-top: 10px;
+    border-top: 1px solid #34495e;
+}
+
+.menu li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    transition: all 0.3s;
+}
+
+.menu li a:hover, .menu li a.active {
+    background: #34495e;
+    border-left: 3px solid #3498db;
+}
+
 .main-content {
-    margin-left: 0; 
+    margin-left: 250px;
+    flex: 1;
     padding: 20px;
     background: white;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     min-height: 100vh;
 }
 
-/* When sidebar is present (add class 'with-sidebar' to body) */
-body.with-sidebar .sidebar {
-    display: block; 
+/* Dashboard Home */
+.dashboard-home {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-body.with-sidebar .main-content {
-    margin-left: 250px; /* Add margin for sidebar */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
 }
 
+.stat-card {
+    background: #f8f9fa;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
 
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    margin-top: 0;
+    color: #7f8c8d;
+    font-size: 1em;
+}
+
+.stat-card p {
+    font-size: 2em;
+    margin: 10px 0 0;
+    color: #2c3e50;
+    font-weight: bold;
+}
 
 /* Form Styling */
 form {
@@ -76,6 +153,11 @@ select {
     box-sizing: border-box;
 }
 
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
 button {
     background: #3498db;
     color: white;
@@ -84,54 +166,31 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 1em;
+    transition: background 0.3s;
 }
 
 button:hover {
     background: #2980b9;
 }
 
-/* Compact Table Styling */
+/* Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    table-layout: fixed; 
-    font-size: 0.85em;
 }
 
 table th, table td {
-    padding: 6px 10px;
+    padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
-
-/* Specific column widths */
-table th:nth-child(1),
-table td:nth-child(1) { width: 15%; } 
-table th:nth-child(2),
-table td:nth-child(2) { 
-    width: 20%; 
-    text-align: right; 
-    font-family: monospace; 
-}
-table th:nth-child(3),
-table td:nth-child(3) { 
-    width: 20%; 
-    text-align: right;
-    font-family: monospace;
-}
-table th:nth-child(4),
-table td:nth-child(4) { width: 45%; } 
 
 table th {
     background-color: #3498db;
     color: white;
     font-weight: bold;
-    position: sticky;
-    top: 0;
 }
 
 table tr:nth-child(even) {
@@ -142,26 +201,33 @@ table tr:hover {
     background-color: #e6f7ff;
 }
 
-/* Responsive adjustments */
+table a {
+    color: #3498db;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+table a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .container {
-        width: 95%;
-        padding: 10px;
+        flex-direction: column;
     }
     
-    table {
-        font-size: 0.8em;
-        display: block;
-        overflow-x: auto;
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
     }
     
-    table th, table td {
-        padding: 4px 8px;
+    .main-content {
+        margin-left: 0;
     }
     
-    /* Adjust column widths for mobile */
-    table th:nth-child(1),
-    table td:nth-child(1) { width: 20%; }
-    table th:nth-child(4),
-    table td:nth-child(4) { width: 40%; }
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
 }
